@@ -1,18 +1,15 @@
-from main import app
+from app import app
 from flask_script import Manager
-from DB_script import DB_manager
+from flask_migrate import Migrate,MigrateCommand
+from models import *
+# from DB_script import DB_manager
 
 
 manager = Manager(app)
-
-@manager.command
-def runserver():
-    '''
-    there is document
-    '''
-    print('run!')
+migrate = Migrate(app,db)
 
 
-manager.add_command('前缀',DB_manager)
+manager.add_command('db',MigrateCommand)
+
 if __name__ == '__main__':
     manager.run()

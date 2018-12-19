@@ -1,4 +1,3 @@
-
 from exts import db
 
 
